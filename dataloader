@@ -1,0 +1,41 @@
+# This code creates a dataloader and cuts down the returned tensors, removing white space. 
+
+# Setup transforms and data loader
+# See https://ryanwingate.com/intro-to-machine-learning/deep-learning-with-pytorch/loading-image-data-into-pytorch/
+
+# Set this to the parent of the directory where the data is. e.g. data is in img/one, datadir is img.
+datadir = 'img/'
+
+# The manual doesn't show any way to get the transform part to clip the white borders, so I do it later.
+transform = transforms.Compose([transforms.ToTensor()])
+
+# Load imagaes
+dataset = datasets.ImageFolder(datadir, transform=transform)
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=64, shuffle=True)
+
+
+# From here down run the following in a loop:
+images, labels = next(iter(dataloader))
+
+# Check shape, should be torch.Size([BATCH_SIZE, 3, 480, 640])
+print("loaded images have shape: ", images.shape)
+
+# We still have white borders around the information content in the images. Lets crop that off.
+
+# Find the rows containing just white by summing rows in first image
+# Note: images[Batch, Color, Row, Column]
+
+# The following was found manually
+print("First row with data: ",   torch.sum( images[0,:,58,:] )) # crop off 57 pixels
+print("Last row with data: ",    torch.sum( images[0,:,426,:] )) # crop off 53 pixels
+print("First Column with data:", torch.sum( images[0,:,:,80] )) # crop off 79 pixels
+print("Last Column with data:",  torch.sum( images[0,:,:,575] )) # cron off 64 pixels
+
+# Conclusion: The useful data is not centered, manual cropping is needed.
+
+# Cut down tensors to remove white borders using margins found above
+
+images = images[:, :, 58:426, 80:575]
+print("Cut down images have shape: ", images.shape) # should output torch.Size([BATCH_SIZE, 3, 368, 495])
+
+# The NN should expect an input of BATCH_SIZE, 3, 368, 495
