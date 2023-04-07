@@ -2,9 +2,9 @@
 Application to get audio features from Spotify for specific songs, and combine with our own audio dataset to predict the features from spectrograms of the songs
 
 Data Folder:
-- ***spotipy_labels.ipynb***: queries Spotify for 1000 songs with different feature values ranging from 0.0-1.0 with a step size of 0.005 to make sure that all values are covered.
-- ***tracks_data.csv***: data file that includes approximately 7000 songs with the song names, artists, and 30 second preview urls
-- ***tracks_data_plus.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.001 to get 1000 songs for each feature value
+- ***spotipy_labels.ipynb***: queries Spotify for songs with different feature values ranging from 0.0-1.0 with a step size of 0.005 to make sure that all values are covered. it also queries Spotify for songs with different feature values ranging from 0.0-1.0 with a step size of 0.001 to augment the size of the dataset
+- ***tracks_data.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.005 and obtains 7042 songs total
+- ***tracks_data_plus.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.001 and obtains 33,353 songs total
 
 Sample Data Folder:
 - ***csv files***: includes the csv files for different features of songs such as danceability, energy, speechiness, etc...
