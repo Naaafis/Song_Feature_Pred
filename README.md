@@ -3,7 +3,7 @@ Application to get audio features from Spotify for specific songs, and combine w
 
 Data Folder:
 - ***spotipy_labels.ipynb***: queries Spotify for songs with different feature values ranging from 0.0-1.0 with a step size of 0.005 to make sure that all values are covered. it also queries Spotify for songs with different feature values ranging from 0.0-1.0 with a step size of 0.001 to augment the size of the dataset
-- ***tracks_data.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.005 and obtains 7042 songs total
+- ***tracks_data.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.005 and obtains 7042 songs total. this data was mainly used to grab the audio data
 - ***tracks_data_plus.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.001 and obtains 33,353 songs total
 
 Sample Data Folder:
