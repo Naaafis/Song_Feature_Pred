@@ -25,7 +25,7 @@ Sample Data Folder:
 
 ***linear_models_combine.ipynb***:
 
-***complex_cnn_mfcc.ipynb***:
+***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.  
 
 ***valence_mfcc_model.ipynb***: 
 
