@@ -6,7 +6,7 @@ Data Folder:
 - ***tracks_data.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.005 and obtains 7042 songs total. this data was mainly used to grab the audio data
 - ***tracks_data_plus.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.001 and obtains 33,353 songs total
 - ***spectrogram_tests.ipynb***: the loop used to extract the spectrogram images from the 30 second preview URLs of the songs from the csv files
-- ***tracks_features.csv***: Final folder containing all of our labels and input data including preview urls
+- ***tracks_features.csv***: Final CSV file containing all of our labels and input data including preview urls
 
 Sample Data Folder:
 - ***csv files***: includes the csv files for different features of songs such as danceability, energy, speechiness, etc...
