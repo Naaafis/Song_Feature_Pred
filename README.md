@@ -15,7 +15,7 @@ Sample Data Folder:
 
 ***model_weights***: Directory containing weights of pretrained models
 
-***song_pred***: environment necessary to run our files locally. It is recommended to load the model weights, labels from
+***song_pred***: environment necessary to run our files locally. It is recommended to load the model weights, labels and notebooks into Colab such that there arent issues with torchaudio. Otherwise, activate this environment as per usual activation of python venv if desired to execute files locally. 
 
 ***simple_model.ipynb***: our first attempt at creating a model to feed in the images of the spectrograms extracted from the audio data for a batch of the songs. this simple model uses a convolutional layer and 3 linear layers and uses MSE as the criterion
 
