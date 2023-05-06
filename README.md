@@ -21,12 +21,12 @@ Sample Data Folder:
 
 ***mfcc_model.ipynb***: File used to convert all of our audio files into MFCC tensors. Per 30 second audio file, there are 20 coefficients for every frame for 160 frames. First shot at training a CNN model to use these tensors as input for our desired labels. Contains a simple 2D CNN model trained on the tensors, a simple RNN model trained on the mfcc tensors and lastly our multi-task RNN model used for our final architecture. Evaluation metrics provided.
 
-***numerical_model.ipynb***:
+***numerical_model.ipynb***: 
 
-***linear_models_combine.ipynb***:
+***linear_models_combine.ipynb***: We take our pretrained multitask RNN and numerical model, and combine their outputs using fully connected layers. We do this by  feeding the inputs two the two networks seperately. Then we take each output and concatenate them in a single vector, which we then feed to a single hidden layer network. We experimented with two types of architecture: One were we removed the final fully connected layer from the multitask RNN and numerical network, and one were we kept it.
 
 ***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.  
 
-***valence_mfcc_model.ipynb***: 
+***valence_mfcc_model.ipynb***: Our attempt at predicting valence using the mfcc model.
 
 ***load_models.ipynb***: Helper file to load numerical regression model and multitask RNN model
