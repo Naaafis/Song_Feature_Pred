@@ -21,7 +21,7 @@ Sample Data Folder:
 
 ***mfcc_model.ipynb***: File used to convert all of our audio files into MFCC tensors. Per 30 second audio file, there are 20 coefficients for every frame for 160 frames. First shot at training a CNN model to use these tensors as input for our desired labels. Contains a simple 2D CNN model trained on the tensors, a simple RNN model trained on the mfcc tensors and lastly our multi-task RNN model used for our final architecture. Evaluation metrics provided.
 
-***numerical_model.ipynb***: 
+***numerical_model.ipynb***: This file has our tuned multi-task linear regression model that takes the numeral aspects of the songs such as tempo, valence, time signature, key, loudness, and mode, and predicts various features such as danceability, energy, acousticness, speechiness, and instrumentalness. The models are accompanied by the evaluation metrics.
 
 ***linear_models_combine.ipynb***: We take our pretrained multitask RNN and numerical model, and combine their outputs using fully connected layers. We do this by  feeding the inputs two the two networks seperately. Then we take each output and concatenate them in a single vector, which we then feed to a single hidden layer network. We experimented with two types of architecture: One were we removed the final fully connected layer from the multitask RNN and numerical network, and one were we kept it.
 
