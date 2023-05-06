@@ -25,7 +25,14 @@ Sample Data Folder:
 
 ***linear_models_combine.ipynb***: We take our pretrained multitask RNN and numerical model, and combine their outputs using fully connected layers. We do this by  feeding the inputs two the two networks seperately. Then we take each output and concatenate them in a single vector, which we then feed to a single hidden layer network. We experimented with two types of architecture: One were we removed the final fully connected layer from the multitask RNN and numerical network, and one were we kept it.
 
-***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.  
+***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.
+
+In the training stage, we take MSE as a loss function and Adam as an optimizer with a learning rate of 0.001 (and later a learning rate of 0.01 and 0.0001). We split the data into train (80%) and test (20%). We train batches of 16 using 6 epochs. The best model returns: 
+
+MSE: 0.026177109113301743
+MAE: 0.11103890379044143
+RMSE: 0.4647755975073034  
+  
 
 ***valence_mfcc_model.ipynb***: Our attempt at predicting valence using the mfcc model.
 
