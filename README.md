@@ -6,7 +6,7 @@ Data Folder:
 - ***tracks_data.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.005 and obtains 7042 songs total. this data was mainly used to grab the audio data
 - ***tracks_data_plus.csv***: data file that includes the songs queried from Spotify with different feature values ranging from 0.0-1.0 with a step size of 0.001 and obtains 33,353 songs total
 - ***spectrogram_tests.ipynb***: the loop used to extract the spectrogram images from the 30 second preview URLs of the songs from the csv files
-- ***tracks_features.csv***: Final folder containing all of our labels and input data including preview urls
+- ***tracks_features.csv***: Final CSV file containing all of our labels and input data including preview urls
 
 Sample Data Folder:
 - ***csv files***: includes the csv files for different features of songs such as danceability, energy, speechiness, etc...
@@ -15,24 +15,18 @@ Sample Data Folder:
 
 ***model_weights***: Directory containing weights of pretrained models
 
-***song_pred***: environment necessary to run our files locally. It is recommended to load the model weights, labels from
+***song_pred***: environment necessary to run our files locally. It is recommended to load the model weights, labels and notebooks into Colab such that there arent issues with torchaudio. Otherwise, activate this environment as per usual activation of python venv if desired to execute files locally. 
 
 ***simple_model.ipynb***: our first attempt at creating a model to feed in the images of the spectrograms extracted from the audio data for a batch of the songs. this simple model uses a convolutional layer and 3 linear layers and uses MSE as the criterion
 
 ***mfcc_model.ipynb***: File used to convert all of our audio files into MFCC tensors. Per 30 second audio file, there are 20 coefficients for every frame for 160 frames. First shot at training a CNN model to use these tensors as input for our desired labels. Contains a simple 2D CNN model trained on the tensors, a simple RNN model trained on the mfcc tensors and lastly our multi-task RNN model used for our final architecture. Evaluation metrics provided.
 
-***numerical_model.ipynb***:
+***numerical_model.ipynb***: This file has our tuned multi-task linear regression model that takes the numeral aspects of the songs such as tempo, valence, time signature, key, loudness, and mode, and predicts various features such as danceability, energy, acousticness, speechiness, and instrumentalness. The models are accompanied by the evaluation metrics.
 
-***linear_models_combine.ipynb***:
+***linear_models_combine.ipynb***: We take our pretrained multitask RNN and numerical model, and combine their outputs using fully connected layers. We do this by  feeding the inputs two the two networks seperately. Then we take each output and concatenate them in a single vector, which we then feed to a single hidden layer network. We experimented with two types of architecture: One were we removed the final fully connected layer from the multitask RNN and numerical network, and one were we kept it.
 
-***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.
+***complex_cnn_mfcc.ipynb***: we load data as waveforms (audio_dir) as well as numerical features (csv_file). We use a dataloader to preprocess the data and extract features. The data loader returns MFCCs and labels all as tensors. We feed this to a convolutional neural network with four convolutional layers, two dropout layers, and two pooling layers. The model ends with two fully connected layers.  
 
-In the training stage, we take MSE as a loss function and Adam as an optimizer with a learning rate of 0.001 (and later a learning rate of 0.01 and 0.0001). We split the data into train (80%) and test (20%). We train batches of 16 using 6 epochs. The best model returns: 
-
-MSE: 0.026177109113301743
-MAE: 0.11103890379044143
-RMSE: 0.4647755975073034   
-
-***valence_mfcc_model.ipynb***: 
+***valence_mfcc_model.ipynb***: Our attempt at predicting valence using the mfcc model.
 
 ***load_models.ipynb***: Helper file to load numerical regression model and multitask RNN model
